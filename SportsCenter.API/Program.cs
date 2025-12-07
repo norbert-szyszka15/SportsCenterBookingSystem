@@ -32,7 +32,7 @@ public class Program
 
         app.UseHttpsRedirection();
 
-        app.MapControllers(); // na póŸniej, gdy dodamy kontrolery
+        app.MapControllers(); // na pï¿½niej, gdy dodamy kontrolery
 
         // Na razie prosty endpoint testowy
         app.MapGet("/ping", () => "pong");
