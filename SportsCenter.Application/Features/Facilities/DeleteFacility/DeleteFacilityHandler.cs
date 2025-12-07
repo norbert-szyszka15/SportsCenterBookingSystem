@@ -1,8 +1,9 @@
+using SportsCenter.Application.Abstractions;
 using SportsCenter.Infrastructure.Persistence;
 
 namespace SportsCenter.Application.Features.Facilities.DeleteFacility;
 
-public class DeleteFacilityHandler
+public class DeleteFacilityHandler : IHandlerDefinition
 {
     private readonly SportsCenterDbContext _db;
 

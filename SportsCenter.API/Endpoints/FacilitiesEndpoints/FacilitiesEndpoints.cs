@@ -1,12 +1,16 @@
+using SportsCenter.API.Extentions;
 using SportsCenter.Application.Features.Facilities.CreateFacility;
+using SportsCenter.Application.Features.Facilities.DeleteFacility;
 using SportsCenter.Application.Features.Facilities.GetFacilities;
 using SportsCenter.Application.Features.Facilities.GetFacilityById;
 using SportsCenter.Application.Features.Facilities.UpdateFacility;
-using SportsCenter.Application.Features.Facilities.DeleteFacility;
 
-public static class FacilitiesEndpoints
+namespace SportsCenter.API.Endpoints.FacilitiesEndpoints;
+
+public class FacilitiesEndpoints : IEndpointDefinition
 {
-    public static void MapFacilitiesEndpoints(this IEndpointRouteBuilder app)
+    // do przeniesienia do odpowiednich klas wewnątrz /FacilitiesEndpoints
+    public void RegisterEndpoints(IEndpointRouteBuilder app)
     {
         var group = app.MapGroup("/api/facilities");
 

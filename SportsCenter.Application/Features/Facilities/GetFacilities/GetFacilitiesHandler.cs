@@ -1,9 +1,10 @@
 using SportsCenter.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using SportsCenter.Application.Abstractions;
 
 namespace SportsCenter.Application.Features.Facilities.GetFacilities;
 
-public class GetFacilitiesHandler
+public class GetFacilitiesHandler : IHandlerDefinition
 {
     private readonly SportsCenterDbContext _db;
 

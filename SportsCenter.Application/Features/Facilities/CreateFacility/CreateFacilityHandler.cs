@@ -1,10 +1,11 @@
 using SportsCenter.Domain.Entities;
 using SportsCenter.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
+using SportsCenter.Application.Abstractions;
 
 namespace SportsCenter.Application.Features.Facilities.CreateFacility;
 
-public class CreateFacilityHandler
+public class CreateFacilityHandler : IHandlerDefinition
 {
     private readonly SportsCenterDbContext _db;
 

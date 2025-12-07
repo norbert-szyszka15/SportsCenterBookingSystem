@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SportsCenter.Application.Features.Customers.CreateCustomer;
-public class CreateCustomerHandler: IHandlerDefinition
+public class CreateCustomerHandler : IHandlerDefinition
 {
     private readonly SportsCenterDbContext _db;
 

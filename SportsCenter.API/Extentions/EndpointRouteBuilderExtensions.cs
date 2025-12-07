@@ -6,8 +6,7 @@ public static class EndpointRouteBuilderExtensions
     public static void MapDiscoveredEndpoints(this IEndpointRouteBuilder app)
     {
         var endpointDefinitionType = typeof(IEndpointDefinition);
-
-       
+        
         var definitions = Assembly.GetExecutingAssembly()
             .GetTypes()
             .Where(t =>
