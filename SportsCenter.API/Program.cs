@@ -17,7 +17,6 @@ public class Program
             options.UseSqlite(builder.Configuration.GetConnectionString("SportsCenterDb"));
         });
 
-
         builder.Services.RegisterDiscoveredHandlers();
 
         // Swagger / OpenAPI
@@ -34,11 +33,7 @@ public class Program
 
         app.UseHttpsRedirection();
 
-       // na p�niej, gdy dodamy kontrolery
-
         app.MapDiscoveredEndpoints();
-
-    
 
         app.Run();
     }

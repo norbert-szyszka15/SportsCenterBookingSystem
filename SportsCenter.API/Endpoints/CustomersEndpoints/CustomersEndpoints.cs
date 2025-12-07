@@ -2,7 +2,7 @@
 using SportsCenter.API.Extentions;
 using SportsCenter.Application.Features.Customers.CreateCustomer;
 
-namespace SportsCenter.API.Endpoints;
+namespace SportsCenter.API.Endpoints.CustomersEndpoints;
 public class CustomersEndpoints : IEndpointDefinition
 {
     public void RegisterEndpoints(IEndpointRouteBuilder app)
