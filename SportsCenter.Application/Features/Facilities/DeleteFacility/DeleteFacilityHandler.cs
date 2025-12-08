@@ -12,7 +12,7 @@ public class DeleteFacilityHandler : IHandlerDefinition
         _db = db;
     }
 
-    public async Task<bool> Handle(int id, CancellationToken ct)
+    public async Task<bool> Handle(int id)
     {
         var facility = await _db.Facilities.FindAsync(id);
 
@@ -20,7 +20,7 @@ public class DeleteFacilityHandler : IHandlerDefinition
             return false;
 
         _db.Facilities.Remove(facility);
-        await _db.SaveChangesAsync(ct);
+        await _db.SaveChangesAsync();
 
         return true;
     }

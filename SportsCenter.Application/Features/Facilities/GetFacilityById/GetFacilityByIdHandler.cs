@@ -13,9 +13,9 @@ public class GetFacilityByIdHandler : IHandlerDefinition
         _db = db;
     }
 
-    public async Task<GetFacilityByIdResponse?> Handle(int id, CancellationToken ct)
+    public async Task<GetFacilityByIdResponse?> Handle(int id)
     {
-        var f = await _db.Facilities.FirstOrDefaultAsync(x => x.Id == id, ct);
+        var f = await _db.Facilities.FirstOrDefaultAsync(x => x.Id == id);
 
         return f == null
             ? null

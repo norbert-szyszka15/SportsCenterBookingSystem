@@ -13,7 +13,7 @@ public class UpdateFacilityHandler : IHandlerDefinition
         _db = db;
     }
 
-    public async Task<bool> Handle(UpdateFacilityRequest request, CancellationToken ct)
+    public async Task<bool> Handle(UpdateFacilityRequest request)
     {
         var facility = await _db.Facilities.FindAsync(request.Id);
 
@@ -25,7 +25,7 @@ public class UpdateFacilityHandler : IHandlerDefinition
         facility.MaxPlayers = request.MaxPlayers;
         facility.PricePerHour = request.PricePerHour;
 
-        await _db.SaveChangesAsync(ct);
+        await _db.SaveChangesAsync();
         return true;
     }
 }
