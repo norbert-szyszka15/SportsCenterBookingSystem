@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SportsCenter.Application.Features.Customers.CreateCustomer;
+
 public class CreateCustomerHandler : IHandlerDefinition
 {
     private readonly SportsCenterDbContext _db;
@@ -18,25 +19,9 @@ public class CreateCustomerHandler : IHandlerDefinition
         _db = db;
     }
 
-    public async Task<CreateCustomerResponse> HandleAsync(
-        CreateCustomerRequest request,
-        CancellationToken cancellationToken = default)
+
+    public async Task<CreateCustomerResponse> Handle(CreateCustomerRequest request)
     {
-        if (string.IsNullOrWhiteSpace(request.FirstName))
-            throw new ArgumentException("First name is required");
-
-        if (string.IsNullOrWhiteSpace(request.LastName))
-            throw new ArgumentException("Last name is required");
-
-        if (string.IsNullOrWhiteSpace(request.Email))
-            throw new ArgumentException("Email is required");
-
-        var emailExists = await _db.Customers
-            .AnyAsync(c => c.Email == request.Email, cancellationToken);
-
-        if (emailExists)
-            throw new InvalidOperationException("Customer with this email already exists");
-
         var customer = new Customer
         {
             FirstName = request.FirstName,
@@ -46,15 +31,11 @@ public class CreateCustomerHandler : IHandlerDefinition
         };
 
         _db.Customers.Add(customer);
-        await _db.SaveChangesAsync(cancellationToken);
+        await _db.SaveChangesAsync();
 
         return new CreateCustomerResponse
         {
-            Id = customer.PublicId,
-            FirstName = customer.FirstName,
-            LastName = customer.LastName,
-            Email = customer.Email,
-            Phone = customer.Phone
+            PublicId = customer.PublicId
         };
     }
 }
